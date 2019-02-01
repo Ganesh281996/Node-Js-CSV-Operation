@@ -1,0 +1,7 @@
+{
+    "ChunkSize" : 10,
+    "IntermediateBucket" : {
+        "Bucket" : "intake-1045-s3-intermediate-bucket",
+        "Key" : ".csv"
+    }
+}

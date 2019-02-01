@@ -1,0 +1,16 @@
+{
+  "name": "splitter-lambda",
+  "version": "1.0.0",
+  "description": "Read CSV file from S3 source bucket and split source object into smaller objects of defined size and save it in S3 intermediate bucket.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ganesh Nadar, Chaithra Shenoy",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "csvjson": "^5.1.0",
+    "pino": "^5.11.1"
+  }
+}
