@@ -1,14 +1,13 @@
-let app = require('./src/app');
-let logger = require('pino')();
+const app = require('./src/app');
 
 exports.handler = async (event) => {
-    logger.info('EVENT = ',event);
+    console.log('EVENT = ',event);
 
     const bucketDetails = {
         Bucket : event.Records[0].s3.bucket.name,
         Key : event.Records[0].s3.object.key
     };
-    logger.info('BUCKET DETAILS = ',bucketDetails);
+    console.log('BUCKET DETAILS = ',bucketDetails);
     
     await app(bucketDetails);
-}
+};

@@ -1,7 +1,11 @@
 {
-    "ChunkSize" : 10,
+    "ChunkSize" : 5,
     "IntermediateBucket" : {
         "Bucket" : "intake-1045-s3-intermediate-bucket",
-        "Key" : ".csv"
-    }
+        "Key" : {
+            "prefix" : "intake",
+            "suffix" : ".csv"
+        }
+    },
+    "SplitterString" : "Example|E|"
 }

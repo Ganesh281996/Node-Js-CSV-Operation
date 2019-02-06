@@ -9,8 +9,6 @@
   "author": "Ganesh Nadar, Chaithra Shenoy",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.395.0",
-    "csvjson": "^5.1.0",
-    "pino": "^5.11.1"
+    "aws-sdk": "^2.395.0"
   }
 }
