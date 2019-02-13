@@ -1,7 +1,7 @@
-const S3 = require('aws-sdk/clients/s3');
-const config = require('./files/config.json');
+const awsS3 = require('aws-sdk/clients/s3');
+const config = require('../config/index').config;
 
-const s3 = new S3();
+const s3 = new awsS3();
 
 exports.getS3Object = function(bucketDetails) {
     return new Promise(function(resolve , reject) {
@@ -9,6 +9,8 @@ exports.getS3Object = function(bucketDetails) {
             if(error) reject(error);
             resolve(s3Object.Body.toString());
         });
+    }).catch(error => {
+        console.error('ERROR = ',error);
     });
 };
 exports.splitCsv = function(s3Object) {
@@ -47,9 +49,9 @@ function putObject(csvData , key) {
             Bucket : config.IntermediateBucket.Bucket,
             Key : key,
             Body : csvData
-        }, function(error , data) {
+        }, function(error , putObjectResult) {
             if(error) reject(error);
-            resolve(data);
+            resolve(putObjectResult);
         });
     });
 };
@@ -58,5 +60,7 @@ exports.uploadCsv = function(csvArray , keys) {
     for(let i=0 ; i<csvArray.length ; i++) {
        putObjectPromises.push(putObject(csvArray[i] , keys[i])) ;
     };
-    return Promise.all(putObjectPromises);
+    return Promise.all(putObjectPromises).catch(error => {
+        console.error('ERROR = ',error);
+    });
 };
